@@ -1,0 +1,2 @@
+msgid  "Warning"
+msgstr "警告"
