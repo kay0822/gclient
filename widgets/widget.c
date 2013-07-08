@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-#include <widget.h>
+#include <widgets/widget.h>
 
 void test_widget(){
-	printf("%s\n", TEST_WIDGET);
+	DEBUG_WIDGET("%s\n", TEST_WIDGET);
 }

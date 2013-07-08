@@ -1,0 +1,7 @@
+[cmake]
+cmake -DWITH_DEBUG -DCMAKE_BUILD_TYPE=Debug
+
+[make]
+make 
+make install
+

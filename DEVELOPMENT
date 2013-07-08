@@ -1,0 +1,14 @@
+1. add DEBUG 
+	a) config.h.in
+		add "cmakedefine"
+	b) cmake/ConfigOptions.cmake
+		add "option"
+	c) put following line in your ".h" file
+#include <common.h>
+#ifdef WITH_DEBUG_FEATURE
+#define DEBUG_FEATURE(fmt, ...) DEBUG_CLASS(FEATURE, fmt, ## __VA_ARGS__)
+#else
+#define DEBUG_FEATIRE(fmt, ...) DEBUG_NULL(fmt, ## __VA_ARGS__)
+#endif
+
+ 

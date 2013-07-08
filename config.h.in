@@ -1,0 +1,15 @@
+#ifndef __CONFIG_H__
+#define __CONFIG_H__
+
+/* Options */
+
+
+/* Plugins */
+
+
+/* Debug */
+#cmakedefine WITH_DEBUG
+#cmakedefine WITH_DEBUG_GTK
+#cmakedefine WITH_DEBUG_WIDGET
+
+#endif

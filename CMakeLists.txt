@@ -25,12 +25,17 @@ set(GTK2_FEATURE_PURPOSE "gtk support")
 set(GTK2_FEATURE_DESCRIPTION "gtk2 library")
 find(GTK2)
 
+# ----- C O N F I G U R E -----
+add_definitions("-DHAVE_CONFIG_H")
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.in ${CMAKE_CURRENT_SOURCE_DIR}/config.h)
+
 # ----- H E A D E R -----
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}) 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 add_subdirectory(include)
 
+add_subdirectory(core)
 add_subdirectory(utils)
 add_subdirectory(widgets)
 add_subdirectory(client)
