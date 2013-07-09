@@ -1,3 +1,5 @@
+option(WITH_DEBUG_ALL "Print all debug messages." OFF)
+
 if(WITH_DEBUG_ALL)
 	set(DEFAULT_DEBUG_OPTION "ON")
 else()

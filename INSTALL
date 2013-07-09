@@ -1,5 +1,5 @@
 [cmake]
-cmake -DWITH_DEBUG -DCMAKE_BUILD_TYPE=Debug
+cmake -DWITH_DEBUG_ALL=ON -DCMAKE_BUILD_TYPE=Debug
 
 [make]
 make 

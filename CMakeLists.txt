@@ -18,6 +18,7 @@ include(FindPkgConfig)
 include(FeatureSummary)
 include(FindFeature)
 include(Find)
+include(ConfigOptions)
 
 # ----- P A C K A G E -----
 set(GTK2_FEATURE_TYPE "REQUIRED") 
