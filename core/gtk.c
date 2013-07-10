@@ -8,6 +8,12 @@ static void destroy( GtkWidget *widget, gpointer *data )
     gtk_main_quit ();
 }
 
+void gclient_append_sep(GtkWidget* menu_item, GtkWidget* sep)
+{
+	GtkWidget* menu = gtk_menu_item_get_submenu(GTK_MENU_ITEM(menu_item));
+	gtk_menu_shell_append(GTK_MENU_SHELL(menu), sep);
+}
+
 
 GtkWidget* gclient_init(int argc, char* argv[]){
     gtk_init (&argc, &argv);

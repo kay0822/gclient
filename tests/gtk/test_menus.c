@@ -58,6 +58,8 @@ int main( int argc, char *argv[])
 
   g_signal_connect(G_OBJECT(quit), "activate",
       G_CALLBACK(gtk_main_quit), NULL);
+  g_signal_connect(G_OBJECT(new), "activate",
+      G_CALLBACK(gtk_main_quit), NULL);
 
   gtk_widget_show_all(window);
 
