@@ -1,4 +1,6 @@
+set(LIBRARY_NAME  ${PROJECT_NAME}-widget)
 
-add_library(${PROJECT_NAME}-widget SHARED widget.c)
+add_library(${LIBRARY_NAME} widget.c)
 
+install(TARGETS ${LIBRARY_NAME} DESTINATION lib)
 

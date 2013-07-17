@@ -1,2 +1,9 @@
-msgid  "Warning"
-msgstr "警告"
+msgid  "package name\n"
+msgstr "包名\n"
+
+
+msgid  "Username"
+msgstr "用户名"
+
+msgid  ":"
+msgstr "："

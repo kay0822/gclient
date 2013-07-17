@@ -6,10 +6,15 @@
 
 /* Plugins */
 
+/* utils */
+#cmakedefine WITH_I18N
+
 
 /* Debug */
 #cmakedefine WITH_DEBUG
 #cmakedefine WITH_DEBUG_GTK
 #cmakedefine WITH_DEBUG_WIDGET
+#cmakedefine WITH_DEBUG_I18N
+#cmakedefine WITH_DEBUG_PARSER
 
 #endif

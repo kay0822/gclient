@@ -17,8 +17,6 @@ gboolean key_value(GtkWidget* widget, GdkEventKey * event, gpointer data){
 }
 
 int main(int argc, char* argv[]){
-	/* Just test widget */
-	test_widget();
 
 	/* Start */
 	DEBUG_MSG("I'm gclient!\n");
@@ -29,6 +27,16 @@ int main(int argc, char* argv[]){
 	GdkScreen *screen = gdk_screen_get_default();
 	gint width = gdk_screen_get_width(screen);
     gint height = gdk_screen_get_height(screen);
+
+	i18n_init();
+
+	/* Just test widget */
+	test_widget();
+
+	/* Just test utils */
+	test_parse();
+
+	test_i18n();
 
 	/* Background */
 	//TODO
