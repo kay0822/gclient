@@ -4,7 +4,7 @@
 
 static void destroy( GtkWidget *widget, gpointer *data )
 {
-    g_print ("destroy event occurred\n");
+    DEBUG_GTK("destroy event occurred\n");
     gtk_main_quit ();
 }
 

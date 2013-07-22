@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<root name="ROOT">
+	<a name="a1">
+		<b>
+			<c name="c1">
+				<d>dddddd</d>
+			</c>
+		</b>
+	</a>
+	<a>
+		<b>
+		</b>
+	</a>
+</root>

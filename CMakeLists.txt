@@ -48,12 +48,21 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.in ${CMAKE_CURRENT_SOURCE_DI
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}) 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 
+# ----- S U B   D I R E C T O R Y -----
+add_definitions(-DPACKAGE_INSTALL_PREFIX="${CMAKE_INSTALL_PREFIX}")
+
 add_subdirectory(include)
 
+if(GTK2_FOUND)
+	include_directories(${GTK2_INCLUDE_DIRS})
+endif(GTK2_FOUND)
+if(WITH_I18N)
+	add_definitions(-DGETTEXT_PACKAGE="${PROJECT_NAME}")
+	add_definitions(-DGETTEXT_LOCALEDIR="${CMAKE_INSTALL_PREFIX}/locale")
+endif()
 add_subdirectory(core)
 add_subdirectory(utils)
 add_subdirectory(widgets)
 add_subdirectory(resources)
 add_subdirectory(client)
-
 

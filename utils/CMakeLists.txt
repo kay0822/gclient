@@ -4,8 +4,8 @@ set(${LIBRARY_NAME}_SRC
 			xml.c)
 
 if(WITH_I18N)
-	add_definitions(-DGETTEXT_PACKAGE="${PROJECT_NAME}")
-	add_definitions(-DGETTEXT_LOCALEDIR="${CMAKE_INSTALL_PREFIX}/locale")
+#	add_definitions(-DGETTEXT_PACKAGE="${PROJECT_NAME}")
+#	add_definitions(-DGETTEXT_LOCALEDIR="${CMAKE_INSTALL_PREFIX}/locale")
 	set(${LIBRARY_NAME}_SRC ${${LIBRARY_NAME}_SRC} i18n.c)
 endif()
 

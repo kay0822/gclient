@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <!--object class="GtkAccelGroup" id="accelgroup1"/-->
+  <object class="GtkImage" id="background">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="pixbuf">../images/bg.png</property>
+  </object>
+  <object class="GtkImage" id="browser.ico">
+    <property name="pixbuf">../images/icons/browser.ico</property>
+  </object>
+  <object class="GtkImage" id="protocol.ico">
+    <property name="pixbuf">../images/icons/protocol.ico</property>
+  </object>
+  <object class="GtkImage" id="network.ico">
+    <property name="pixbuf">../images/icons/network.ico</property>
+  </object>
+  <object class="GtkImage" id=".ico">
+    <property name="pixbuf">../images/icons/browser.ico</property>
+  </object>
+  <object class="GtkWindow" id="desktop">
+    <property name="can_focus">False</property>
+	<!--property name="resizable">False</property-->
+    <!--property name="window_position">center-always</property-->
+    <!--property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property-->
+    <signal name="destroy" handler="destroy" swapped="no"/>
+    <child>
+      <object class="GtkVBox" id="vbox1">
+        <child>
+          <object class="GtkMenuBar" id="menubar1">
+			<property name="height-request">24</property>
+            <child>
+              <object class="GtkImageMenuItem" id="start">
+                <property name="label" translatable="yes">Start</property>
+                <property name="tooltip_text" translatable="yes">Start</property>
+                <!--property name="tooltip_markup" translatable="yes">&lt;b&gt;Start&lt;/b&gt;</property-->
+                <!--property name="use_action_appearance">False</property-->
+				<!--property name="use_underline">True</property-->
+                <!--property name="use_stock">True</property-->
+				<!--signal name="activate" handler="show" swapped="yes" object="XXXXX"/-->
+                <child type="submenu">
+                  <object class="GtkMenu" id="startmenu">
+                    <child>
+                      <object class="GtkImageMenuItem" id="browser">
+                        <property name="label" translatable="yes">Browser</property>
+                        <property name="tooltip_text" translatable="yes">Browser</property>
+						<property name="always-show-image">True</property>
+						<property name="image">browser.ico</property>
+						<!-- shortcuts  GDK_SUPER_MASK  GDK_CONTROL_MASK  GDK_MOD1_MASK  GDK_SHIFT_MASK -->
+                        <!--property name="accel_group">accelgroup1</property-->
+                        <accelerator key="b" signal="activate" modifiers="GDK_SUPER_MASK" flags="GTK_ACCEL_MASK"/>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkImageMenuItem" id="protocol">
+                        <property name="label" translatable="yes">Protocol</property>
+                        <property name="tooltip_text" translatable="yes">Protocol</property>
+                        <child type="submenu">
+                          <object class="GtkMenu" id="protocolmenu">
+						    <child>
+							  <object class="GtkImageMenuItem" id="ica">
+								<property name="label" translatable="yes">ICA</property>
+								<property name="tooltip_text" translatable="yes">Independent Computing Architecture(Citrix)</property>
+								<property name="always-show-image">True</property>
+								<property name="image">ica.ico</property>
+								<accelerator key="i" signal="activate" modifiers="GDK_SUPER_MASK"/>
+							  </object>
+							</child>
+							<child>
+							  <object class="GtkImageMenuItem" id="rdp">
+								<property name="label" translatable="yes">RDP</property>
+								<property name="tooltip_text" translatable="yes">Remote Desktop Protocol(Microsoft)</property>
+								<property name="always-show-image">True</property>
+								<property name="image">rdp.ico</property>
+								<accelerator key="r" signal="activate" modifiers="GDK_SUPER_MASK"/>
+							  </object>
+							</child>
+							<child>
+							  <object class="GtkImageMenuItem" id="pcoip">
+								<property name="label" translatable="yes">PCOIP</property>
+								<property name="tooltip_text" translatable="yes">PC-over-IP(VMware)</property>
+								<property name="always-show-image">True</property>
+								<property name="image">pcoip.ico</property>
+								<accelerator key="v" signal="activate" modifiers="GDK_SUPER_MASK"/>
+							  </object>
+							</child>
+							<!--child>
+							  <object class="GtkImageMenuItem" id="chp">
+								<property name="label" translatable="yes">CHP</property>
+								<property name="tooltip_text" translatable="yes">Cloud High Protocol</property>
+								<accelerator key="c" signal="activate" modifiers="GDK_SUPER_MASK"/>
+							  </object>
+							</child-->
+						  </object>
+                        </child>
+                      </object>
+                    </child>
+					<child>
+                      <object class="GtkImageMenuItem" id="network">
+                        <property name="label" translatable="yes">Network</property>
+                        <property name="tooltip_text" translatable="yes">Network</property>
+						<property name="always-show-image">True</property>
+						<property name="image">network.ico</property>
+						<child type="submenu">
+                          <object class="GtkMenu" id="networkmenu">
+							<child>
+							  <object class="GtkImageMenuItem" id="networkconfig">
+								<property name="label" translatable="yes">Network Config</property>
+								<property name="tooltip_text" translatable="yes">Network Configuration</property>
+								<accelerator key="n" signal="activate" modifiers="GDK_SUPER_MASK"/>
+							  </object>
+							</child>
+							<child>
+							  <object class="GtkImageMenuItem" id="ping">
+								<property name="label" translatable="yes">Ping</property>
+								<property name="tooltip_text" translatable="yes">Packet Internet Gopher</property>
+								<accelerator key="p" signal="activate" modifiers="GDK_SUPER_MASK"/>
+							  </object>
+							</child>
+							<child>
+							  <object class="GtkImageMenuItem" id="traceroute">
+								<property name="label" translatable="yes">Trace Route</property>
+								<property name="tooltip_text" translatable="yes">Trace Route</property>
+								<accelerator key="t" signal="activate" modifiers="GDK_SUPER_MASK"/>
+							  </object>
+							</child>
+						  </object>
+						</child>
+                      </object>
+                    </child>
+					<child>
+                      <object class="GtkImageMenuItem" id="display">
+                        <property name="label" translatable="yes">Display</property>
+                        <property name="tooltip_text" translatable="yes">Display</property>
+						<property name="always-show-image">True</property>
+						<property name="image">display.ico</property>
+						<child type="submenu">
+                          <object class="GtkMenu" id="displaymenu">
+							<child>
+							  <object class="GtkImageMenuItem" id="displayconfig">
+								<property name="label" translatable="yes">Display Config</property>
+								<property name="tooltip_text" translatable="yes">Display Configuration</property>
+								<accelerator key="d" signal="activate" modifiers="GDK_SUPER_MASK"/>
+							  </object>
+							</child>
+							<child>
+							  <object class="GtkImageMenuItem" id="screensaver">
+								<property name="label" translatable="yes">Screen Saver</property>
+								<property name="tooltip_text" translatable="yes">Screen Saver</property>
+								<accelerator key="s" signal="activate" modifiers="GDK_SUPER_MASK"/>
+							  </object>
+							</child>
+						  </object>
+						</child>
+                      </object>
+                    </child>
+					<child>
+                      <object class="GtkImageMenuItem" id="factory">
+                        <property name="label" translatable="yes">Factory Reset</property>
+                        <property name="tooltip_text" translatable="yes">Restore factory defaults</property>
+						<property name="always-show-image">True</property>
+						<property name="image">factory.ico</property>
+                      </object>
+                    </child>
+					<child>
+                      <object class="GtkImageMenuItem" id="upgrade">
+                        <property name="label" translatable="yes">Upgrade</property>
+                        <property name="tooltip_text" translatable="yes">Upgrade Software</property>
+						<property name="always-show-image">True</property>
+						<property name="image">upgrade.ico</property>
+                      </object>
+                    </child>
+					<child>
+                      <object class="GtkImageMenuItem" id="sysinfo">
+                        <property name="label" translatable="yes">Sysinfo</property>
+                        <property name="tooltip_text" translatable="yes">System Info</property>
+						<property name="always-show-image">True</property>
+						<property name="image">sysinfo.ico</property>
+                      </object>
+                    </child>
+					<child>
+                      <object class="GtkImageMenuItem" id="datetime">
+                        <property name="label" translatable="yes">Date &amp; Time</property>
+                        <property name="tooltip_text" translatable="yes">Date &amp; Time</property>
+						<property name="always-show-image">True</property>
+						<property name="image">datetime.ico</property>
+                      </object>
+                    </child>
+					<child>
+                      <object class="GtkImageMenuItem" id="poweroff">
+                        <property name="label" translatable="yes">Power off</property>
+                        <property name="tooltip_text" translatable="yes">Power off</property>
+						<property name="always-show-image">True</property>
+						<property name="image">poweroff.ico</property>
+                      </object>
+                    </child>
+					<child>
+                      <object class="GtkImageMenuItem" id="reboot">
+                        <property name="label" translatable="yes">Reboot</property>
+                        <property name="tooltip_text" translatable="yes">reboot</property>
+						<property name="always-show-image">True</property>
+						<property name="image">reboot.ico</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkImageMenuItem" id="quit">
+                        <property name="label" translatable="yes">Quit</property>
+                        <property name="tooltip_text" translatable="yes">Quit</property>
+    					<signal name="activate" handler="destroy" swapped="no"/>
+                        <accelerator key="q" signal="activate" modifiers="GDK_SUPER_MASK"/>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="pack_type">end</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+		<!--child>
+          <object class="GtkImage" id="background">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+			<property name="pixbuf">../images/bg.png</property>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+			<property name="pack_type">end</property>
+            <property name="position">1</property>
+          </packing>
+        </child-->
+        <child>
+          <placeholder/>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
