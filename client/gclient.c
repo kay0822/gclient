@@ -1,44 +1,60 @@
+/**
+ * gclient program
+ */
 #include <stdio.h>
 
 #include <gclient.h>
 #include <widgets/widget.h>
 #include <core/gtk.h>
 
-	GtkBuilder *builder;
-
 //#include <cairo.h>
+
+GtkBuilder *builder;
+
 gboolean show(GtkWidget* widget, GdkEventKey * event, gpointer data){
-	DEBUG_MSG("show\n");
-	//window=GTK_WIDGET(gtk_builder_get_object(builder,"desktop"));
-	//GdkEventButton *bevent = (GdkEventButton *) event; 
-	//gtk_menu_popup(GTK_MENU(widget), NULL, NULL, NULL, NULL, 0, gtk_get_current_event_time());
+	DEBUG("\n");
 	gtk_menu_item_select (GTK_MENU_ITEM(widget));
-	//gtk_menu_item_activate(GTK_MENU_ITEM(widget));
 	gtk_widget_show_all(widget);
 	return TRUE;
 }
 
-gboolean key_value(GtkWidget* widget, GdkEventKey * event, gpointer data){
-	guint keyvalue = event->keyval;
-	DEBUG_MSG("%d \n", keyvalue);
-	return TRUE;
-}
 gboolean destroy(GtkWidget* widget, gpointer data){
-	DEBUG_MSG("\n");
+	DEBUG("\n");
+	g_object_unref(G_OBJECT(builder));
 	gtk_main_quit ();
 }
 
-gboolean ica_callback(GtkWidget* widget, GdkEventKey * event, gpointer data){
+gboolean ica_callback(GtkWidget* widget, GdkEventKey* event, gpointer data){
 	GtkWidget * dialog;
-	GtkBuilder *builder = gtk_builder_new();
-	gtk_builder_set_translation_domain(builder, GETTEXT_PACKAGE);
+	/**************
 	char xmlname[128];
 	MEMZERO(xmlname);
-	sprintf(xmlname, "%s/xml/dialog.xml", PACKAGE_INSTALL_PREFIX);
-	gtk_builder_add_from_file(builder, xmlname, NULL);
+	gtk_builder_add_from_file(builder, XML(dialog.xml), &err);
+	**************/
+	char* xmlStrings[MAX_XML_STRINGS_SIZE];
+	int i, num = 0; 
+#if 1
+	int ret = xml_get_strings_by_xpath(XML(dialog.xml), "//interface", NULL, &num, &xmlStrings);
+	if(ret != 0) {
+		ERROR("ret = %d\n", ret);	
+	}
+	for( i = 0; i < num; i++){
+		DEBUG("\n%s\n", *(xmlStrings + i));
+		GError *err = NULL;
+		gtk_builder_add_from_string(builder, *(xmlStrings+i), strlen(*(xmlStrings+i)) , &err);
+		if(err != NULL) {
+			WARN("dialog.xml is invalid, code=%d, msg=%s\n", err->code, err->message);
+		}
+		free( *(xmlStrings + i) );
+	}
+#else
+	const gchar* str = "   <interface><object class=\"GtkDialog\" id=\"dialog1\"><child internal-child=\"vbox\"><object class=\"GtkVBox\" id=\"vbox1\"><property name=\"border-width\">10</property><child internal-child=\"action_area\"><object class=\"GtkHButtonBox\" id=\"hbuttonbox1\"><property name=\"border-width\">20</property><child><object class=\"GtkButton\" id=\"ok_button\"><property name=\"label\"  translatable=\"yes\">gtk-ok</property><!--property name=\"use-stock\">TRUE</property--><signal name=\"clicked\" handler=\"ok_button_clicked\"/></object></child></object></child></object></child></object></interface>";
+	gtk_builder_add_from_string(builder, str, strlen(str), NULL);
+#endif
 	dialog=GTK_WIDGET(gtk_builder_get_object(builder,"dialog1"));
-	g_object_unref(G_OBJECT(builder));
+	//g_object_unref(G_OBJECT(builder)); /* builder should be a global variable */
 	gtk_widget_show_all(dialog);
+
 #if 0
 	DEBUG_MSG("\n");
 	GtkWidget *dialog_ica;
@@ -147,7 +163,7 @@ int main(int argc, char* argv[]){
 	gtk_window_fullscreen(GTK_WINDOW(window));
 	gtk_builder_connect_signals (builder, NULL);
 
-   	g_object_unref(G_OBJECT(builder));
+//	g_object_unref(G_OBJECT(builder)); /*put it in destroy*/
 
     gtk_widget_show_all(window);
 	gtk_main();
@@ -243,24 +259,6 @@ DEBUG_MSG("gtk_statusbar_get_context_id = %d\n", gtk_statusbar_get_context_id(GT
 	g_signal_connect(G_OBJECT(quit), "activate", G_CALLBACK(destroy), NULL);
 #endif
 	
-#if 0
-	GtkAccelGroup * accel_group = NULL;
-	vbox = gtk_vbox_new(FALSE, 0);
-	gtk_container_add(GTK_CONTAINER(window), vbox);
-
-	menubar = gtk_menu_bar_new();
-	filemenu = gtk_menu_new();
-
-	accel_group = gtk_accel_group_new();
-	gtk_window_add_accel_group(GTK_WINDOW(window), accel_group);
-
-	file = gtk_menu_item_new_with_label("FILE");
-	new = gtk_image_menu_item_new_from_stock(GTK_STOCK_NEW, NULL);
-	
-	gtk_menu_item_set_submenu(GTK_MENU_ITEM(file), filemenu);
-	gtk_menu_shell_append(GTK_MENU_SHELL(filemenu), new);
-	gtk_box_pack_start(GTK_BOX(vbox), menubar, FALSE, FALSE, 1);
-#endif
 	gtk_widget_show_all(window);
 	gtk_main();
 

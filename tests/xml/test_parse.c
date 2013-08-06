@@ -19,6 +19,7 @@ void parseNode(xmlNode* node){
 }
 
 int main(int argc, char** argv){
+	xmlInitParser();
 	LIBXML_TEST_VERSION
 	
 	xmlDoc* 	doc = NULL;
@@ -37,13 +38,24 @@ int main(int argc, char** argv){
 		xmlFreeDoc(doc);
 		return;
 	}
+#if 0
 	if ((!xmlStrcmp(cur->name, (const xmlChar *)"root"))) {
 		xmlChar *key;
-		key = xmlNodeListGetString(doc, cur->children, 1);
+		key = xmlNodeListGetString(doc, cur->children, 0);
 		printf("keyword: %s\n", key);
 		xmlFree(key);
 	}
+#endif
 	parseNode(cur);
+	//xmlBufferPtr buf;
+	xmlBufferPtr buf = xmlBufferCreate();
+	int size = xmlNodeDump(buf, NULL, cur, 0, 0);
+	//printf("%s\n", buf->content);
+	printf("%s\n", xmlBufferContent(buf));
+
+	xmlBufferFree(buf);
+	
+	//printf("%s\n", xmlXPathCastNodeToString(doc));
 
 	xmlFreeDoc(doc);
 	xmlCleanupParser();

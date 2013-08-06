@@ -7,6 +7,8 @@
 #define DEBUG_CLASS(_class, fmt, ...)				DEBUG_PRINT("DBG_" #_class, "%-15s (%03d): ", fmt, ## __VA_ARGS__)
 #define DEBUG_WARN(fmt, ...) 						DEBUG_PRINT("Warning %s (%d): ", fmt, ## __VA_ARGS__)
 
+#define DEBUG(fmt, ...)								DEBUG_MSG(fmt, ## __VA_ARGS__)
+
 #ifdef WITH_DEBUG
 #define DEBUG_MSG(fmt, ...) 						DEBUG_CLASS(MSG, fmt, ## __VA_ARGS__)
 #else

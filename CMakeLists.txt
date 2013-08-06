@@ -48,8 +48,10 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.in ${CMAKE_CURRENT_SOURCE_DI
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}) 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 
-# ----- S U B   D I R E C T O R Y -----
+# ----- D E F I N I T I O N S -----
 add_definitions(-DPACKAGE_INSTALL_PREFIX="${CMAKE_INSTALL_PREFIX}")
+
+# ----- S U B   D I R E C T O R Y -----
 
 add_subdirectory(include)
 

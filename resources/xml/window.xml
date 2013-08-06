@@ -63,7 +63,8 @@
 								<property name="tooltip_text" translatable="yes">Independent Computing Architecture(Citrix)</property>
 								<property name="always-show-image">True</property>
 								<property name="image">ica.ico</property>
-								<accelerator key="i" signal="activate" modifiers="GDK_SUPER_MASK"/>
+								<accelerator key="i" signal="activate" modifiers="GDK_CONTROL_MASK"/>
+								<signal name="activate" handler="ica_callback" swapped="no"/>
 							  </object>
 							</child>
 							<child>
@@ -72,7 +73,7 @@
 								<property name="tooltip_text" translatable="yes">Remote Desktop Protocol(Microsoft)</property>
 								<property name="always-show-image">True</property>
 								<property name="image">rdp.ico</property>
-								<accelerator key="r" signal="activate" modifiers="GDK_SUPER_MASK"/>
+								<accelerator key="r" signal="activate" modifiers="GDK_CONTROL_MASK"/>
 							  </object>
 							</child>
 							<child>
@@ -81,7 +82,7 @@
 								<property name="tooltip_text" translatable="yes">PC-over-IP(VMware)</property>
 								<property name="always-show-image">True</property>
 								<property name="image">pcoip.ico</property>
-								<accelerator key="v" signal="activate" modifiers="GDK_SUPER_MASK"/>
+								<accelerator key="p" signal="activate" modifiers="GDK_CONTROL_MASK"/>
 							  </object>
 							</child>
 							<!--child>

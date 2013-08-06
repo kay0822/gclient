@@ -1,6 +1,6 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <root name="ROOT">
-	<a name="a1">
+	<a name="a1" xxx="haha">
 		<b>
 			<c name="c1">
 				<d>dddddd</d>
@@ -8,7 +8,6 @@
 		</b>
 	</a>
 	<a>
-		<b>
-		</b>
+		<b>value</b>
 	</a>
 </root>

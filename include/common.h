@@ -2,6 +2,8 @@
 #define __COMMON_H__
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <assert.h>
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
@@ -11,6 +13,12 @@
 #ifdef WITH_I18N
 #include <utils/i18n.h>
 #endif
+
+/* R E S O U C E */
+#define ICON(name)				RESOURCE(/images/icons/, name)
+#define IMAGE(name)				RESOURCE(/images/, name)
+#define XML(name) 				RESOURCE(/xml/, name)
+#define RESOURCE(dir, name) 	PACKAGE_INSTALL_PREFIX #dir #name
 
 /* M E M */
 #define MEMZERO(obj)  memset(obj, 0, sizeof(obj))
